@@ -18,7 +18,7 @@ char response[4];
 
 
 
-ISR (USART_RXC_vect){
+ISR (USART_RX_vect){
 	uart.receive_buffer[uart.buffer_position] = uart.receive_char();
 	
 	if(uart.receive_buffer[uart.buffer_position] == '\n') {
@@ -69,7 +69,6 @@ int main(void)
     
     while (1) 
     {
-		uart.send_string("name");
 		listen();
     }
 }
