@@ -10,10 +10,10 @@ void UART::set_baudrate(uint32_t baud){
 		case 1000000UL:
 			switch(baud){
 				case 9600:
-					UBRRL = 6;
+					UBRR0L = 6;
 					break;
 				case 4800:
-					UBRRL = 12;
+					UBRR0L = 12;
 					break;
 				default:
 					break;
@@ -21,13 +21,13 @@ void UART::set_baudrate(uint32_t baud){
 		case 8000000UL:
 			switch(baud){
 				case 115200:
-					UBRRL = 3;
+					UBRR0L = 3;
 					break;
 				case 9600:
-					UBRRL = 51;
+					UBRR0L = 51;
 					break;
 				case 4800:
-					UBRRL = 207;
+					UBRR0L = 207;
 					break;
 				default:
 					break;
@@ -36,13 +36,13 @@ void UART::set_baudrate(uint32_t baud){
 		case 16000000UL:
 			switch(baud){
 				case 115200:
-					 UBRRL = 8;
+					 UBRR0L = 8;
 					 break;
 				case 9600:
-					UBRRL = 103;
+					UBRR0L = 103;
 					break;
 				case 4800:
-					UBRRL = 207;
+					UBRR0L = 207;
 					break;
 				default:
 					break;
@@ -57,13 +57,14 @@ void UART::set_baudrate(uint32_t baud){
 void UART::init(uint32_t baudrate){
 	set_baudrate(baudrate);
 	//Enable RECEIVER and TRANSMITER
-	UCSRB |= (1<<RXEN) | (1<<TXEN);
+	UCSR0B |= (1<<RXEN0) | (1<<TXEN);
 	//Enable receiver complete Interrupt;
-	UCSRB |= (1<<RXCIE);
+	UCSR0B |= (1<<RXCIE0);
 	//set character size to 8 bits
-	UCSRC |= (1<<UCSZ0) | (1<<UCSZ1);
+	UCSR0C |= (1<<UCSZ00) | (1<<UCSZ01);
 	//set Asynchronous mode
-	UCSRC &= ~(1<<UMSEL);
+	UCSR0C &= ~(1<<UMSEL00);
+	UCSR0C &= ~(1<<UMSEL01);
 	
 	//enable global Interrupt
 	sei();
@@ -71,8 +72,8 @@ void UART::init(uint32_t baudrate){
 }
 
 void UART::send_char(char data){
-	while(!(UCSRA & (1<<UDRE))){}
-	UDR = data;
+	while(!(UCSR0A & (1<<UDRE0))){}
+	UDR0 = data;
 }
 
 void UART::send_string(char *data){
@@ -80,7 +81,7 @@ void UART::send_string(char *data){
 }
 
 char UART::receive_char(void) const{
-	return UDR;
+	return UDR0;
 
 }
 
