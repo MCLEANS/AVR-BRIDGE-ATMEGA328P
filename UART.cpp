@@ -57,7 +57,7 @@ void UART::set_baudrate(uint32_t baud){
 void UART::init(uint32_t baudrate){
 	set_baudrate(baudrate);
 	//Enable RECEIVER and TRANSMITER
-	UCSR0B |= (1<<RXEN0) | (1<<TXEN);
+	UCSR0B |= (1<<RXEN0) | (1<<TXEN0);
 	//Enable receiver complete Interrupt;
 	UCSR0B |= (1<<RXCIE0);
 	//set character size to 8 bits
