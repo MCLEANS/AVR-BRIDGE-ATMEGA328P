@@ -17,5 +17,5 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install gcc-avr binutils avr-libc avrdude make
     - name: Compile code
-      run: make hex
+      run: make all
     
