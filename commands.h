@@ -1,7 +1,7 @@
 #ifndef _COMMANDS_H
 #define _COMMANDS_H
 
-char new_line[] = "\n";
+ const char new_line[] = "\n";
 
 //ADC FETCH COMMANDS
 #define FETCH_ADC0 "CROSS+ADC0"
