@@ -6,14 +6,12 @@
 
 #include "UART.h"
 #include "ADC.h"
+#include "commands.h"
 
-//create UART object
+
 UART uart;
-//create ADC object
 _ADC adc;
 
-char new_line[] = "\n";
-char querry[] = "AT";
 char response[4];
 
 
@@ -43,11 +41,11 @@ ISR(ADC_vect){
 void listen(){
 	if(uart.is_endline){
 		
-		if(strncmp(uart.receive_buffer,querry,(sizeof(querry)/sizeof(char))-1) == 0){
+		if(strncmp(uart.receive_buffer,FETCH_ADC0,(sizeof(FETCH_ADC0)/sizeof(char))-1) == 0){
 			adc.convert();
 			_delay_us(500);
 			uart.send_string(response);
-			uart.send_string(new_line);
+			uart.send_char(new_line);
 			uart.flush_buffer();
 		}
 
