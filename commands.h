@@ -1,6 +1,8 @@
 #ifndef _COMMANDS_H
 #define _COMMANDS_H
 
+char new_line[] = "\n";
+
 //ADC FETCH COMMANDS
 #define FETCH_ADC0 "CROSS+ADC0"
 #define FETCH_ADC1 "CROSS+ADC1"
