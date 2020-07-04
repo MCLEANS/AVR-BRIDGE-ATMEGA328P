@@ -40,7 +40,7 @@ ISR(ADC_vect){
 
 void listen(){
 	if(uart.is_endline){
-		
+		uart.send_string("TEST");
 		if(strncmp(uart.receive_buffer,FETCH_ADC0,(sizeof(FETCH_ADC0)/sizeof(char))-1) == 0){
 			adc.convert();
 			_delay_us(500);
@@ -61,12 +61,13 @@ void listen(){
 
 int main(void)
 {
-	uart.init(4800);
+	uart.init(9600);
 	adc.init();
 	
     
     while (1) 
     {
+		uart.send_char('M');
 		listen();
     }
 }
