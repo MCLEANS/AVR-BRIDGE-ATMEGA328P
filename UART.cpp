@@ -62,9 +62,6 @@ void UART::init(uint32_t baudrate){
 	UCSR0B |= (1<<RXCIE0);
 	//set character size to 8 bits
 	UCSR0C |= (1<<UCSZ00) | (1<<UCSZ01);
-	//set Asynchronous mode
-	UCSR0C &= ~(1<<UMSEL00);
-	UCSR0C &= ~(1<<UMSEL01);
 	
 	//enable global Interrupt
 	sei();
