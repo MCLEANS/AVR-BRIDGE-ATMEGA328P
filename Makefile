@@ -3,8 +3,8 @@ TARGET = main
 PROGRAMMER =  usbasp
 PORT = usb
 CC = avr-g++
-CFLAGS = -Os -D F_CPU=16000000 -mmcu=$(MCU) 
-LFLAGS = -D F_CPU=16000000 -mmcu=$(MCU) 
+CFLAGS = -Os -D F_CPU=1000000 -mmcu=$(MCU) 
+LFLAGS = -D F_CPU=1000000 -mmcu=$(MCU) 
 
 
 
@@ -16,7 +16,7 @@ all :
 
 
 program :
-	avrdude -c $(PROGRAMMER) -p m2560 -P $(PORT) -U flash:w:$(TARGET).hex
+	avrdude -c $(PROGRAMMER) -p m328p -P $(PORT) -U flash:w:$(TARGET).hex
 
 clean :
 	rm *.hex *.o *.elf
