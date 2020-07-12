@@ -700,9 +700,6 @@ void listen(){
 			uart.send_char(new_line);
 			uart.flush_buffer();
 		}
-
-
-
 		else{
 			uart.flush_buffer();
 		}
@@ -718,10 +715,8 @@ int main(void)
 	uart.init(9600);
 	adc.init();
 	
-    
-    while (1) 
+	while (1) 
     {
-		uart.send_char('M');
 		listen();
     }
 }
