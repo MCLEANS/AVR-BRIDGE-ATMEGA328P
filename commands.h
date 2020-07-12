@@ -2,6 +2,7 @@
 #define _COMMANDS_H
 
  const char new_line= '\n';
+ char default_reply[] = "OK";
 
 //ADC FETCH COMMANDS
 #define FETCH_ADC0 "CROSS+ADC0"
