@@ -32,7 +32,7 @@ class _ADC {
     public:
         _ADC();
         void init();
-        uint16_t get_value();
+        ADC_channel_value get_value();
         void convert();
 };
 
