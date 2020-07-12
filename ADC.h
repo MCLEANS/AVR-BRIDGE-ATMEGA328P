@@ -14,14 +14,6 @@ struct ADC_channel_value{
     uint16_t channel_5;
     uint16_t channel_6;
     uint16_t channel_7;
-    uint16_t channel_8;
-    uint16_t channel_9;
-    uint16_t channel_10;
-    uint16_t channel_11;
-    uint16_t channel_12;
-    uint16_t channel_13;
-    uint16_t channel_14;
-    uint16_t channel_15;
 };
 
 class _ADC {
