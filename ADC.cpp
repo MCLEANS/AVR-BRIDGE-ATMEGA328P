@@ -22,11 +22,56 @@ void _ADC::init(){
 	ADCSRA |= (1<<ADSC);
 }
 
-uint16_t _ADC::get_value(){
-    this->value = ADCL >> 6;
-	this->value |= ADCH << 2;
-    
-    return value;
+ADC_channel_value _ADC::get_value(){
+	ADC_channel_value adc_values;
+
+	switch(ADMUX){
+		case 0x60:
+			adc_values.channel_0 = ADCL >> 6;
+			adc_values.channel_0 |= ADCH << 2;
+			ADMUX = 0x61;
+			break;
+		case 0x61:
+			adc_values.channel_1 = ADCL >> 6;
+			adc_values.channel_1 |= ADCH << 2;
+			ADMUX = 0x62;
+			break;
+		case 0x62:
+			adc_values.channel_2 = ADCL >> 6;
+			adc_values.channel_2 |= ADCH << 2;
+			ADMUX = 0x63;
+			break;
+		case 0x63:
+			adc_values.channel_3 = ADCL >> 6;
+			adc_values.channel_3 |= ADCH << 2;
+			ADMUX = 0x64;
+			break;
+		case 0x64:
+			adc_values.channel_4 = ADCL >> 6;
+			adc_values.channel_4 |= ADCH << 2;
+			ADMUX = 0x65;
+			break;
+		case 0x65:
+			adc_values.channel_5 = ADCL >> 6;
+			adc_values.channel_5 |= ADCH << 2;
+			ADMUX = 0x66;
+			break;
+		case 0x66:
+			adc_values.channel_6 = ADCL >> 6;
+			adc_values.channel_6 |= ADCH << 2;
+			ADMUX = 0x67;
+			break;
+		case 0x67:
+			adc_values.channel_7 = ADCL >> 6;
+			adc_values.channel_7 |= ADCH << 2;
+			ADMUX = 0x60;
+			break;
+		default:
+			break;
+	}
+
+    convert();
+    return adc_values;
 }
 
 void _ADC::convert(){

@@ -1,4 +1,4 @@
-name: AVR-UART-ADC
+name: AVR-BRIDGE-ATMEGA328P
 
 on:
   push:
