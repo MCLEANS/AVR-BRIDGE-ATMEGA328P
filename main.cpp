@@ -256,6 +256,65 @@ void listen(){
 			uart.send_char(new_line);
 			uart.flush_buffer();
 		}
+		/*******************************************************************************************
+		 * GET PIN OUTPUT STATUS
+		 * *****************************************************************************************/
+		else if(strncmp(uart.receive_buffer,PINB0_INPUT_STATUS,(sizeof(PINB0_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN0);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB1_INPUT_STATUS,(sizeof(PINB1_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN1);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB2_INPUT_STATUS,(sizeof(PINB2_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN2);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB3_INPUT_STATUS,(sizeof(PINB3_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN3);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB4_INPUT_STATUS,(sizeof(PINB4_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN4);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB5_INPUT_STATUS,(sizeof(PINB5_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN5);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB6_INPUT_STATUS,(sizeof(PINB6_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN6);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
+		else if(strncmp(uart.receive_buffer,PINB7_INPUT_STATUS,(sizeof(PINB7_INPUT_STATUS)/sizeof(char))-1) == 0){
+			bool status = gpio.input_status(&DDRB,PIN7);
+			if(status) uart.send_string(input_high);
+			else if(!status) uart.send_string(input_low);
+			uart.send_char(new_line);
+			uart.flush_buffer();
+		}
 
 		/*******************************************************************************************
 		 *  SET OUTPUT PIN
