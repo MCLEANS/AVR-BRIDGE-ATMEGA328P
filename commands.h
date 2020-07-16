@@ -3,6 +3,8 @@
 
  const char new_line= '\n';
  char default_reply[] = "OK";
+ char input_high[] = "HIGH";
+ char input_low[] = "LOW";
 
 //ADC FETCH COMMANDS
 #define FETCH_ADC0 "CROSS+ADC0"
