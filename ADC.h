@@ -3,7 +3,7 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
+
 
 struct ADC_channel_value{
     uint16_t channel_0;
