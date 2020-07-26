@@ -648,15 +648,19 @@ int main(void)
 	//SET PD6 AND PD7 TOU OUTPUT
 	gpio.set_output(&DDRD,PIN6);
 	gpio.set_output(&DDRD,PIN7);
+	
+	//SET PD6 LOW AND PD7 HIGH
 	gpio.set_low(&DDRD,PIN6);
 	gpio.set_high(&DDRD,PIN7);
 	
 
 	
 	while(1) {	
-		//gpio.toggle_pin(&DDRD,PIN6);
-		//gpio.toggle_pin(&DDRD,PIN7);
+		//TOGGLE STATUS PINS
+		gpio.toggle_pin(&DDRD,PIN6);
+		gpio.toggle_pin(&DDRD,PIN7);
 		
 		listen();
+		_delay_ms(200);
     }
 }
