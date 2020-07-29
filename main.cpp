@@ -10,8 +10,6 @@
 #include "GPIO.h"
 
 
-
-
 UART uart;
 _ADC adc;
 GPIO gpio;
@@ -638,13 +636,27 @@ void listen(){
 	}
 }
 
+//This timer is used to blink the status LEDs
+void timer_init(){
+	//SET PRESCALER TO 256
+	TCCR1B |= (1<<CS12);
+	//ENABLE CTC MODE
+	TCCR1B |= (1<<WGM12);
+	//SET THE COMPARE VALUE
+	OCR1A = 3906;
+	//ENABLE OUTPUT COMPARE INTERRUPT
+	TIMSK1 |= (1<<OCIE1A);
+	//ENABLE GLOBAL INTERRUPTS
+	sei();
 
+}
 
-int main(void)
-{
-	uart.init(9600);
-	adc.init();
+ISR(TIMER1_COMPA_vect){
+	gpio.toggle_pin(&DDRD,PIN6);
+	gpio.toggle_pin(&DDRD,PIN7);
+}
 
+void set_inital_status_LED_state(){
 	//SET PD6 AND PD7 TOU OUTPUT
 	gpio.set_output(&DDRD,PIN6);
 	gpio.set_output(&DDRD,PIN7);
@@ -652,15 +664,18 @@ int main(void)
 	//SET PD6 LOW AND PD7 HIGH
 	gpio.set_low(&DDRD,PIN6);
 	gpio.set_high(&DDRD,PIN7);
-	
+}
 
+int main(void)
+{
+	uart.init(9600);
+	adc.init();
+	timer_init();
 	
+	set_inital_status_LED_state();
+
 	while(1) {	
-		//TOGGLE STATUS PINS
-		gpio.toggle_pin(&DDRD,PIN6);
-		gpio.toggle_pin(&DDRD,PIN7);
 
 		listen();
-		_delay_ms(200);
-    }
+	}
 }
