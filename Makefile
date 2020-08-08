@@ -3,8 +3,8 @@ TARGET = main
 PROGRAMMER =  usbasp
 PORT = usb
 CC = avr-g++
-CFLAGS = -Os -D F_CPU=1000000 -mmcu=$(MCU) 
-LFLAGS = -D F_CPU=1000000 -mmcu=$(MCU) 
+CFLAGS = -Os -D F_CPU=16000000 -mmcu=$(MCU) 
+LFLAGS = -D F_CPU=16000000 -mmcu=$(MCU) 
 
 
 
