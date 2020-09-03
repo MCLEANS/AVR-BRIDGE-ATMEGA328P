@@ -672,10 +672,10 @@ void timer_init(){
 	TIMSK1 |= (1<<OCIE1A);
 	//ENABLE GLOBAL INTERRUPTS
 	sei();
-
 }
 
 ISR(TIMER1_COMPA_vect){
+	//toggle leds every 250ms
 	gpio.toggle_pin(&DDRD,PIN6);
 	gpio.toggle_pin(&DDRD,PIN7);
 }
@@ -698,8 +698,7 @@ int main(void)
 	
 	set_inital_status_LED_state();
 
-	while(1) {	
-
+	while(1) {
 		listen();
 	}
 }
