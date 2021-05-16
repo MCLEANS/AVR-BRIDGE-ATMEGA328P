@@ -130,7 +130,6 @@ void listen(){
 			itoa(adc_values.channel_7,response,10);
 			uart.send_string(response);
 			uart.send_char(new_line);
-			uart.flush_buffer();
 		}
 
 		/*******************************************************************************************
