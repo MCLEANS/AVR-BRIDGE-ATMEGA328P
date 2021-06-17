@@ -1,4 +1,4 @@
-MCU = atmega8
+MCU = atmega328p
 TARGET = main
 PROGRAMMER =  usbasp
 PORT = usb
@@ -16,7 +16,7 @@ all :
 
 
 program :
-	avrdude -c $(PROGRAMMER) -p m8 -P $(PORT) -U flash:w:$(TARGET).hex
+	avrdude -c $(PROGRAMMER) -p m328p -P $(PORT) -U flash:w:$(TARGET).hex
 
 clean :
 	rm *.hex *.o *.elf

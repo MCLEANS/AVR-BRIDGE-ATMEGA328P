@@ -42,7 +42,7 @@ ADC_channel_value adc_values;
 
 char response[5];
 
-ISR (USART_RX_vect){
+ISR(USART_RX_vect){
 	uart.receive_buffer[uart.buffer_position] = uart.receive_char();
 	
 	if(uart.receive_buffer[uart.buffer_position] == '\n') {
@@ -53,8 +53,6 @@ ISR (USART_RX_vect){
 	
     if(uart.buffer_position > BUFFER_SIZE) uart.buffer_position = 0;
 }
-
-
 
 ISR(ADC_vect){
 	adc_values = adc.get_value();	
@@ -130,7 +128,7 @@ void listen(){
 			itoa(adc_values.channel_7,response,10);
 			uart.send_string(response);
 			uart.send_char(new_line);
-			uart.flash_buffer();
+			uart.flush_buffer();
 		}
 
 		/*******************************************************************************************
