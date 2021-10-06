@@ -658,26 +658,6 @@ void listen(){
 	}
 }
 
-//This timer is used to blink the status LEDs
-void timer_init(){
-	//SET PRESCALER TO 256
-	TCCR1B |= (1<<CS12);
-	//ENABLE CTC MODE
-	TCCR1B |= (1<<WGM12);
-	//SET THE COMPARE VALUE (250ms)
-	OCR1A = 15625; 
-	//ENABLE OUTPUT COMPARE INTERRUPT
-	TIMSK1 |= (1<<OCIE1A);
-	//ENABLE GLOBAL INTERRUPTS
-	sei();
-}
-
-ISR(TIMER1_COMPA_vect){
-	//toggle leds every 250ms
-	gpio.toggle_pin(&DDRD,PIN6);
-	gpio.toggle_pin(&DDRD,PIN7);
-}
-
 void set_inital_status_LED_state(){
 	//SET PD6 AND PD7 TOU OUTPUT
 	gpio.set_output(&DDRD,PIN6);
@@ -692,7 +672,6 @@ int main(void)
 {
 	uart.init(9600);
 	adc.init();
-	timer_init();
 	
 	set_inital_status_LED_state();
 
