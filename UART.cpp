@@ -74,6 +74,9 @@ void UART::send_char(char data){
 }
 
 void UART::send_string(char *data){
+	DATA_TRANSMISSION = true;
+	DATA_RECEPTION = false;
+	
 	for(;*data;data++) send_char(*data);
 }
 

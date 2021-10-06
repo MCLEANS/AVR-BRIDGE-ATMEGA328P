@@ -47,10 +47,14 @@ ADC_channel_value adc_values;
 char response[5];
 
 ISR(USART_RX_vect){
+	/* Turn on Rx status LED  flags */
+	uart.DATA_RECEPTION = true;
+	uart.DATA_TRANSMISSION = false;
+
 	uart.receive_buffer[uart.buffer_position] = uart.receive_char();
 	
 	if(uart.receive_buffer[uart.buffer_position] == '\n') {
-	uart.is_endline = true;
+		uart.is_endline = true;
     }
     
     uart.buffer_position++;
@@ -680,6 +684,14 @@ int main(void)
 	set_inital_status_LED_state();
 
 	while(1) {
+		if(uart.DATA_RECEPTION){
+			gpio.set_low(&RX_LED_PORT,RX_LED_PIN);
+			gpio.set_high(&TX_LED_PORT,TX_LED_PIN);
+		}
+		if(uart.DATA_TRANSMISSION){
+			gpio.set_high(&RX_LED_PORT,RX_LED_PIN);
+			gpio.set_low(&TX_LED_PORT,TX_LED_PIN);
+		}
 		listen();
 	}
 }
