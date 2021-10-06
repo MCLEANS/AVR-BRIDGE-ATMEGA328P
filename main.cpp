@@ -33,6 +33,10 @@ SOFTWARE.
 #include "commands.h"
 #include "GPIO.h"
 
+#define RX_LED_PORT DDRD
+#define RX_LED_PIN  PIN6
+#define TX_LED_PORT DDRD
+#define TX_LED_PIN  PIN7
 
 UART uart;
 _ADC adc;
@@ -659,13 +663,13 @@ void listen(){
 }
 
 void set_inital_status_LED_state(){
-	//SET PD6 AND PD7 TOU OUTPUT
-	gpio.set_output(&DDRD,PIN6);
-	gpio.set_output(&DDRD,PIN7);
+	//SET PD6 AND PD7 TO OUTPUT
+	gpio.set_output(&RX_LED_PORT,RX_LED_PIN);
+	gpio.set_output(&TX_LED_PORT,TX_LED_PIN);
 	
-	//SET PD6 LOW AND PD7 HIGH
-	gpio.set_low(&DDRD,PIN6);
-	gpio.set_high(&DDRD,PIN7);
+	//SET PD6 AND PD7 TO HIGH
+	gpio.set_high(&RX_LED_PORT,RX_LED_PIN);
+	gpio.set_high(&TX_LED_PORT,TX_LED_PIN);
 }
 
 int main(void)
