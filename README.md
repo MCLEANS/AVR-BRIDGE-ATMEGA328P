@@ -29,6 +29,11 @@ Both configuration and control is attained using the "CROSS" commands listed in 
 
 The software stuck also supports obtaining ADC values and Digital Input. The process is as easy as sending a Serial Command and receiving the response serially via USART.
 
+## Testing setup
+The system testing circuit board that contains both the ESP8266 and the Atmega328p designed using KiCAD can be found at https://github.com/MCLEANS/AVR-BRIDGE-ATMEGA328P-PCB (The hardware is open-source and open to use).
+
+![circuit board](https://pbs.twimg.com/media/EdUHqd8WoAE1fRa?format=jpg&name=medium)
+
 ## How to set up the compilation environmant.
 ### Installing Make
 Linux
