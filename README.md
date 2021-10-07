@@ -54,6 +54,7 @@ Linux
     $ sudo apt install avrdude
 
 Mac OS
+
     $ brew install avrdude
 
 ## Installing for Windows
