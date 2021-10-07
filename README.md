@@ -1,4 +1,4 @@
-        # AVR-BRIDGE SOFTWARE STACK
+# AVR-BRIDGE SOFTWARE STACK
 This is a software stack optimized for the Atmega328p to enable it be used as an I/O and ADC expander via USART.
 
 ## How it works
@@ -8,7 +8,7 @@ Both configuration and control is attained using the "CROSS" commands listed in 
         /**
         * This code is uploaded onto the ESP8266
         */
-
+        
         #include <Arduino.h>
 
         void setup(){
