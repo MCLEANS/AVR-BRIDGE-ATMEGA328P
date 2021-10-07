@@ -66,7 +66,7 @@ The system testing circuit board that contains both the ESP8266 and the Atmega32
 
 ![circuit board](https://pbs.twimg.com/media/EdUHqd8WoAE1fRa?format=jpg&name=medium)
 
-## How to set up the compilation environmant.
+## How to set up the compilation environment.
 ### Installing Make
 Linux
 
