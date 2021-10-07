@@ -5,7 +5,10 @@ This is a software stack optimized for the Atmega328p to enable it be used as an
 The software stack uses "CROSS" commands to exchange data across the "BRIDGE". This is simillar to how we use "AT" commands with most of the available wireless modules. This enables increased number of GPIO, ADCs and other periferals to other microcontrollers with limited I/O e.g ESP8266.
 
 Both configuration and control is attained using the "CROSS" commands listed in the "commands.h" file. For example to toggle an I/O pin on the atmaga, the process would be configured as shown below. This sample was implemented using the ESP8266.
-
+        /**
+        * This code is uploaded onto the ESP8266
+        */
+        
         #include <Arduino.h>
 
         void setup(){
@@ -27,7 +30,7 @@ Both configuration and control is attained using the "CROSS" commands listed in 
                     
         }
 
-The software stuck also supports obtaining ADC values and Digital Input. The process is as easy as sending a Serial Command and receiving the response serially via USART.
+The software stack also supports obtaining ADC values and Digital Input. The process is as easy as sending a Serial Command and receiving the response serially via USART.
 
 ## Testing setup
 The system testing circuit board that contains both the ESP8266 and the Atmega328p designed using KiCAD can be found at https://github.com/MCLEANS/AVR-BRIDGE-ATMEGA328P-PCB (The hardware is open-source and open to use).
