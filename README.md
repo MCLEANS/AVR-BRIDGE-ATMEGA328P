@@ -29,6 +29,35 @@ Both configuration and control is attained using the "CROSS" commands listed in 
             delay(1000);
                     
         }
+        
+To obtain 10 bit ADC value from Atmega328p ADC0.
+
+        /**
+        * This code is uploaded onto the ESP8266
+        */
+        
+        #include <Arduino.h>
+
+        void setup(){
+            /* Set communication baudrate */
+            Serial.begin(9600);
+            /* Configure Pin B0 as output, The Atmega will respond with "OK" if the process was successful */
+            Serial.println("CROSS+ADC0");
+            /* This delay allows time for the Atmega to process the Instruction and respond */
+            delay(5);
+            /* Check if there is any serial data available */
+            while(Serial.available() > 0){
+                /* Store the received ADC value */
+                String ADC_value = Serial.readString();
+             }
+            
+            
+        }
+
+        void loop(){
+            
+        }
+
 
 The software stack also supports obtaining ADC values and Digital Input. The process is as easy as sending a Serial Command and receiving the response serially via USART.
 
