@@ -95,7 +95,7 @@ Mac OS
     $ brew install avrdude
 
 ## Installing for Windows
-The installation procesure for the AVR build environment for windows can be found here "https://www.newbiehack.com/MicrocontrollerProgrammingEnvironmentWinAVRInstall.aspx"
+The installation procesure for the AVR build environment for windows can be found here https://www.newbiehack.com/MicrocontrollerProgrammingEnvironmentWinAVRInstall.aspx
 
 ## Compiling the software
 
